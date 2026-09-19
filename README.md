@@ -39,13 +39,17 @@ src
 
 ## Current Features
 
-* WebDriver initialization and management
-* Browser setup and teardown using TestNG
-* Configuration using properties file
-* Page Object Model implementation
-* Login automation
-* TestNG assertions
-* Maven project setup
+* Java + Selenium WebDriver
+* TestNG
+* Page Object Model (POM)
+* BaseTest for setup and teardown
+* DriverFactory for WebDriver management
+* ConfigReader for configuration
+* Chrome and Firefox browser support
+* Browser selection through config.properties
+* Explicit waits using WebDriverWait
+* Valid login automation
+* TestNG assertion for successful login
 
 ## Test Application
 
@@ -84,3 +88,29 @@ Planned additions include:
 * Reporting
 * Cross-browser execution
 * CI/CD integration
+
+## Configuration
+
+Browser and application URL are configured in:
+
+browser=chrome
+url=https://www.saucedemo.com/
+
+The browser can be changed without modifying the test code
+
+
+## Current Test
+
+Valid Login
+
+Open application
+↓
+Enter username
+↓
+Enter password
+↓
+Click Login
+↓
+Verify inventory page
+↓
+Close browser

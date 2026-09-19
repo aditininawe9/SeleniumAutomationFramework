@@ -1,8 +1,11 @@
 package com.testingacademy.pages;
 
-import com.testingacademy.factory.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -13,18 +16,15 @@ public class LoginPage {
     private By loginButton = By.id("login-button");
 
     public LoginPage(WebDriver driver) {
-        this.driver = DriverFactory.getDriver();
+        this.driver = driver;
     }
 
-    public void enterUsername(String usernameValue) {
-        driver.findElement(username).sendKeys(usernameValue);
-    }
-
-    public void enterPassword(String passwordValue) {
-        driver.findElement(password).sendKeys(passwordValue);
-    }
-
-    public void clickLogin() {
-        driver.findElement(loginButton).click();
+    public void login(String usernameValue, String passwordValue) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(username)).sendKeys(usernameValue);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(password)).sendKeys(passwordValue);
+        wait.until(
+                ExpectedConditions.elementToBeClickable(loginButton)
+        ).click();
     }
 }

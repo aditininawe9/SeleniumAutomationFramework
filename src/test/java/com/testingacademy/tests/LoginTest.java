@@ -14,9 +14,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage =
                 new LoginPage(DriverFactory.getDriver());
 
-        loginPage.enterUsername("standard_user");
-        loginPage.enterPassword("secret_sauce");
-        loginPage.clickLogin();
+        loginPage.login("standard_user", "secret_sauce");
 
         String currentUrl = DriverFactory.getDriver().getCurrentUrl();
 
