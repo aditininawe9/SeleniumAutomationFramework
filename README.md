@@ -17,7 +17,15 @@ The framework is currently being developed as part of my QA Automation learning 
 
 ## Framework Structure
 
-```text
+- Page Object Model (POM)
+- Selenium WebDriver
+- Java
+- TestNG
+- Maven
+- Explicit Waits
+- Reusable DriverFactory
+- ConfigReader for test configuration
+
 src
 ├── test
 │   ├── java
@@ -28,14 +36,15 @@ src
 │   │       │   └── DriverFactory.java
 │   │       ├── pages
 │   │       │   └── LoginPage.java
+│   │       │   └── ProductPage.java
 │   │       ├── tests
 │   │       │   └── LoginTest.java
+│   │       │   └── ProductTest.java
 │   │       └── utils
 │   │           └── ConfigReader.java
 │   │
 │   └── resources
 │       └── config.properties
-```
 
 ## Current Features
 
@@ -114,3 +123,17 @@ Click Login
 Verify inventory page
 ↓
 Close browser
+
+## Automated Scenarios
+
+### Login
+- Valid login
+- Invalid login
+
+### Product
+- Verify products are displayed
+- Verify product names
+- Select a product
+- Add product to cart
+
+For the complete test case list, see [TEST_CASES.md](TEST_CASES.md).
