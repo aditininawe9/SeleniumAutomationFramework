@@ -44,7 +44,7 @@ src
 │   │           └── ConfigReader.java
 │   │
 │   └── resources
-│       └── config.properties
+│       └── config.propertiesc
 
 ## Current Features
 
@@ -136,4 +136,9 @@ Close browser
 - Select a product
 - Add product to cart
 
+### Dropdown
+- Verify Name (A to Z)
+- Verify Name (Z to A)
+- Verify Price (low to high)
+- Verify Price (high to low)
 For the complete test case list, see [TEST_CASES.md](TEST_CASES.md).
