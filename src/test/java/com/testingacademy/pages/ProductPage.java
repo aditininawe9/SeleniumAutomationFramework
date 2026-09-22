@@ -76,10 +76,42 @@ public class ProductPage {
         select.selectByVisibleText(option);
     }
     public void selectProduct(String productName) {
-        driver.findElement(By.xpath("//div[@data-test='inventory-item-name' and text()='" + productName + "']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement product = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//div[@data-test='inventory-item-name' and text()='" + productName + "']")
+        ));
+        product.click();
     }
 
     public void addProductToCart(String productName) {
-        driver.findElement(By.xpath("//button[@data-test='add-to-cart-" + productName.toLowerCase().replace(" ", "-") + "']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement addProduct = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//button[@data-test='add-to-cart-" + productName.toLowerCase().replace(" ", "-") + "']"))
+                );
+        addProduct.click();
+    }
+
+    public String getCartCount() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement cartBadge = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//span[@class='shopping_cart_badge']"))
+        );
+        return cartBadge.getText();
+    }
+
+    public void addProductToCartFromDetails() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement addProduct = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//button[@data-test='add-to-cart']"))
+        );
+        addProduct.click();
     }
 }

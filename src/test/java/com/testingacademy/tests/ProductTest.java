@@ -87,4 +87,27 @@ public class ProductTest extends BaseTest {
 
         Assert.assertEquals(actualNumericPrices, expectedPrices);
     }
+
+    @Test
+    public void addSelectedProducts() {
+        ProductPage productPage = new ProductPage(DriverFactory.getDriver());
+        productPage.addProductToCart("Sauce Labs Backpack");
+        Assert.assertEquals(
+                productPage.getCartCount(),
+                "1",
+                "Cart count should be 1 after adding a product"
+        );
+    }
+
+    @Test
+    public void addSelectedDetailProducts() {
+        ProductPage productPage = new ProductPage(DriverFactory.getDriver());
+        productPage.selectProduct("Sauce Labs Backpack");
+        productPage.addProductToCartFromDetails();
+        Assert.assertEquals(
+                productPage.getCartCount(),
+                "1",
+                "Cart count should be 1 after adding a product"
+        );
+    }
 }

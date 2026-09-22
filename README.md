@@ -122,6 +122,8 @@ Click Login
 ↓
 Verify inventory page
 ↓
+Add Product to Cart
+↓
 Close browser
 
 ## Automated Scenarios
