@@ -124,6 +124,10 @@ Verify inventory page
 ↓
 Add Product to Cart
 ↓
+Go To Cart Page
+↓
+Remove Product From Cart
+↓
 Close browser
 
 ## Automated Scenarios
@@ -137,6 +141,7 @@ Close browser
 - Verify product names
 - Select a product
 - Add product to cart
+- Remove product from cart
 
 ### Dropdown
 - Verify Name (A to Z)

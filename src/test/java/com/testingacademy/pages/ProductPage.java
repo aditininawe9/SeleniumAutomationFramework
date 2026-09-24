@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ProductPage {
     private WebDriver driver;
-    By sortDropdown = By.cssSelector("[data-test='product-sort-container']");
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
