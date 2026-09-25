@@ -6,6 +6,7 @@ import com.testingacademy.pages.CartPage;
 import com.testingacademy.pages.CheckoutOverviewPage;
 import com.testingacademy.pages.CheckoutPage;
 import com.testingacademy.pages.ProductPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
@@ -23,5 +24,8 @@ public class CheckoutTest extends BaseTest {
 
         CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(DriverFactory.getDriver());
         checkoutOverviewPage.clickFinishButton();
+        Assert.assertTrue(
+                DriverFactory.getDriver().getCurrentUrl().contains("checkout-complete")
+        );
     }
 }

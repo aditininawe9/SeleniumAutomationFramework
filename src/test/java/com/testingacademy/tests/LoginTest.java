@@ -18,6 +18,6 @@ public class LoginTest extends BaseTest {
 
         String currentUrl = DriverFactory.getDriver().getCurrentUrl();
 
-        Assert.assertTrue(currentUrl.contains("inventory"));
+        Assert.assertTrue(currentUrl.contains("inventory"),"User should be redirected to inventory page after login");
     }
 }

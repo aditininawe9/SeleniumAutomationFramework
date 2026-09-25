@@ -17,8 +17,8 @@ public class ProductTest extends BaseTest {
         List<String> products =  productPage.getProductNames();
         List<String> productPrices = productPage.getProductPrices();
 
-        Assert.assertFalse(products.isEmpty());
-        Assert.assertFalse(productPrices.isEmpty());
+        Assert.assertFalse(products.isEmpty(), "Product list should not be empty");
+        Assert.assertFalse(productPrices.isEmpty(),"Product list should not be empty");
     }
     @Test
     public void verifyProductsSortedAZ() {
