@@ -1,7 +1,6 @@
 package com.testingacademy.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,6 +16,8 @@ public class CartPage {
     private By cartItem = By.cssSelector("[data-test='inventory-item-name']");
     private By cartItemPrice = By.cssSelector("[data-test='inventory-item-price']");
     private By cartItemQuantity = By.cssSelector("[data-test='item-quantity']");
+    private By checkoutButton = By.id("checkout");
+    private By cartIcon =  By.cssSelector("[data-test='shopping-cart-link']");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -59,5 +60,17 @@ public class CartPage {
         );
 
         return !driver.findElements(product).isEmpty();
+    }
+
+    public void clickCheckout() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+        wait.until(ExpectedConditions.urlContains("checkout-step-one"));
+    }
+
+    public void clickCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
+        wait.until(ExpectedConditions.urlContains("cart"));
     }
 }

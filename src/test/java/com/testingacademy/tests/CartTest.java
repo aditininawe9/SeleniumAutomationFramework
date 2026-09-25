@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CartItem extends BaseTest {
+public class CartTest extends BaseTest {
     @Test
     public void verifyProductsInCart() {
         ProductPage productPage = new ProductPage(DriverFactory.getDriver());

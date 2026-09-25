@@ -21,10 +21,14 @@ public class LoginPage {
 
     public void login(String usernameValue, String passwordValue) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(username)).sendKeys(usernameValue);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(password)).sendKeys(passwordValue);
-        wait.until(
-                ExpectedConditions.elementToBeClickable(loginButton)
-        ).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(username))
+                .sendKeys(usernameValue);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(password))
+                .sendKeys(passwordValue);
+
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton))
+                .click();
     }
 }
