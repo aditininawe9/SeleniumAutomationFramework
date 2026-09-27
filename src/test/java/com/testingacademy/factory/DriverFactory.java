@@ -13,12 +13,20 @@ public class DriverFactory {
     public static void initDriver() {
         String browser = ConfigReader.get("browser");
 
-        if("firefox".equals(browser)) {
+        if ("chrome".equalsIgnoreCase(browser)) {
             driver = new ChromeDriver();
-            driver.manage().window().maximize();
+
+        } else if ("firefox".equalsIgnoreCase(browser)) {
+            driver = new FirefoxDriver();
+
+        } else if ("edge".equalsIgnoreCase(browser)) {
+            driver = new EdgeDriver();
+
         } else {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
+
+        driver.manage().window().maximize();
     }
 
     public static WebDriver getDriver() {

@@ -25,7 +25,8 @@ public class CheckoutTest extends BaseTest {
         CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(DriverFactory.getDriver());
         checkoutOverviewPage.clickFinishButton();
         Assert.assertTrue(
-                DriverFactory.getDriver().getCurrentUrl().contains("checkout-complete")
+                DriverFactory.getDriver().getCurrentUrl().contains("checkout-complete"),
+                "Checkout should complete successfully"
         );
     }
 }
