@@ -6,11 +6,16 @@ import com.testingacademy.pages.CartPage;
 import com.testingacademy.pages.CheckoutOverviewPage;
 import com.testingacademy.pages.CheckoutPage;
 import com.testingacademy.pages.ProductPage;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Epic("E-Commerce Application")
+@Feature("Checkout")
 public class CheckoutTest extends BaseTest {
     @Test
+    @Story("User completes checkout")
+    @Severity(SeverityLevel.CRITICAL)
     public void verifyCheckoutInformation() {
         ProductPage productPage = new ProductPage(DriverFactory.getDriver());
         productPage.addProductToCart("Sauce Labs Backpack");

@@ -78,19 +78,27 @@ public class ProductPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement product = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
+                ExpectedConditions.elementToBeClickable(
                         By.xpath("//div[@data-test='inventory-item-name' and text()='" + productName + "']")
-        ));
+                )
+        );
+
         product.click();
+
+        wait.until(
+                ExpectedConditions.urlContains("inventory-item")
+        );
     }
 
     public void addProductToCart(String productName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement addProduct = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//button[@data-test='add-to-cart-" + productName.toLowerCase().replace(" ", "-") + "']"))
-                );
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//button[@data-test='add-to-cart-"
+                                + productName.toLowerCase().replace(" ", "-") + "']")
+                )
+        );
         addProduct.click();
     }
 
@@ -99,8 +107,10 @@ public class ProductPage {
 
         WebElement cartBadge = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//span[@class='shopping_cart_badge']"))
+                        By.cssSelector("[data-test='shopping-cart-badge']")
+                )
         );
+
         return cartBadge.getText();
     }
 
@@ -108,7 +118,7 @@ public class ProductPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement addProduct = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
+                ExpectedConditions.elementToBeClickable(
                         By.xpath("//button[@data-test='add-to-cart']"))
         );
         addProduct.click();

@@ -4,7 +4,6 @@ import com.testingacademy.base.BaseTest;
 import com.testingacademy.factory.DriverFactory;
 import com.testingacademy.pages.CartPage;
 import com.testingacademy.pages.ProductPage;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +14,7 @@ public class CartTest extends BaseTest {
         productPage.addProductToCart("Sauce Labs Backpack");
 
         CartPage cartPage = new CartPage(DriverFactory.getDriver());
-        DriverFactory.getDriver().findElement(By.className("shopping_cart_link")).click();
+        cartPage.clickCart();
 
         Assert.assertEquals(
                 cartPage.getCartItemName(),

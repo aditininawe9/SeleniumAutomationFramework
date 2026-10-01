@@ -15,16 +15,16 @@ public class CartPage {
 
     private By cartItem = By.cssSelector("[data-test='inventory-item-name']");
     private By cartItemPrice = By.cssSelector("[data-test='inventory-item-price']");
-    private By cartItemQuantity = By.cssSelector("[data-test='item-quantity']");
+    private By cartItemQuantity = By.cssSelector(".cart_quantity");
     private By checkoutButton = By.id("checkout");
-    private By cartIcon =  By.cssSelector("[data-test='shopping-cart-link']");
+    private By cartIcon = By.cssSelector("[data-test='shopping-cart-link']");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-        public String getCartItemName() {
+    public String getCartItemName() {
         return wait.until(
                 ExpectedConditions.visibilityOfElementLocated(cartItem)
         ).getText();
@@ -43,19 +43,20 @@ public class CartPage {
     }
 
     public void removeProductFromCart(String productName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        WebElement removeProduct = wait.until(
-                ExpectedConditions.elementToBeClickable(
-                        By.xpath("//button[@data-test='remove-" + productName.toLowerCase().replace(" ", "-") + "']"))
+        By removeButton = By.xpath(
+                "//button[@data-test='remove-"
+                        + productName.toLowerCase().replace(" ", "-") + "']"
         );
-        removeProduct.click();
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(removeButton)
+        ).click();
     }
 
     public boolean isProductPresent(String productName) {
 
         By product = By.xpath(
-                "//div[@data-test='inventory-item-name' and text()='"
+                "//div[@data-test='cart-item']//div[@data-test='inventory-item-name' and text()='"
                         + productName + "']"
         );
 
@@ -63,13 +64,20 @@ public class CartPage {
     }
 
     public void clickCheckout() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(checkoutButton)
+        ).click();
     }
 
     public void clickCart() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(cartIcon)).click();
-        wait.until(ExpectedConditions.urlContains("cart"));
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(cartIcon)
+        ).click();
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(cartItem)
+        );
     }
 }
